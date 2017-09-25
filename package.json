@@ -1,0 +1,14 @@
+{
+  "name": "@nodevolution/logging",
+  "version": "0.1.0",
+  "license": "MIT",
+  "main": "dist/commonjs/index.js",
+  "typings": "dist/commonjs/index.d.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "tslint": "^5.7.0",
+    "typescript": "^2.4.2"
+  }
+}

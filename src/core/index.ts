@@ -1,0 +1,1 @@
+export { ILogEventSink } from "./ILogEventSink";
