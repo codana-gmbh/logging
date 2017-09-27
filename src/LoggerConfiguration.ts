@@ -5,6 +5,11 @@ import {LogLevel} from "./LogLevel";
 import {SafeAggregateSink} from "./sinks/SafeAggregateSink";
 
 export class LoggerConfiguration {
+
+    public static create(): LoggerConfiguration {
+        return new LoggerConfiguration();
+    }
+
     private _level: LogLevel;
     private _sinks: ILogEventSink[];
 
