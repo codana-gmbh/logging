@@ -4,7 +4,9 @@
   "license": "MIT",
   "main": "dist/commonjs/index.js",
   "typings": "dist/commonjs/index.d.ts",
-  "files": ["./dist"],
+  "files": [
+    "./dist"
+  ],
   "scripts": {
     "lint": "yarn run tslint --project ./tsconfig.json",
     "build": "yarn run tsc"
