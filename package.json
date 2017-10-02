@@ -1,6 +1,6 @@
 {
   "name": "@econsor-mobile/logging",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "license": "MIT",
   "main": "dist/commonjs/index.js",
   "typings": "dist/commonjs/index.d.ts",
@@ -9,9 +9,26 @@
   ],
   "scripts": {
     "lint": "yarn run tslint --project ./tsconfig.json",
-    "build": "yarn run tsc"
+    "build": "yarn run tsc",
+    "test": "jest"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "(./tests/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json"
+    ]
   },
   "devDependencies": {
+    "@types/jest": "^21.1.1",
+    "jest": "^21.2.0",
+    "ts-jest": "^21.0.1",
     "tslint": "^5.7.0",
     "typescript": "^2.4.2"
   }

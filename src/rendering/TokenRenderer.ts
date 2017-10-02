@@ -5,11 +5,15 @@ import {ITokenRenderer} from "./ITokenRenderer";
 import {LogLevelToken} from "./LogLevelToken";
 import {MessageToken} from "./MessageToken";
 import {TimestampToken} from "./TimestampToken";
+import {ScopeToken} from "./ScopeToken";
 
 export class TokenRenderer implements ITokenRenderer {
 
     public render<TToken extends ILogEventToken>(token: TToken, buffer: ITextBuffer): void {
-        if (this.isLogLevelToken(token)) {
+        if (this.isScopeToken(token)) {
+            this.renderScopeToken(token, buffer);
+        }
+        else if (this.isLogLevelToken(token)) {
             this.renderLevelToken(token, buffer);
         }
         else if (this.isMessageToken(token)) {
@@ -44,12 +48,21 @@ export class TokenRenderer implements ITokenRenderer {
         buffer.write(`[${stringifiedLogLevel}]`);
     }
 
+    private renderScopeToken(token: ScopeToken, buffer: ITextBuffer): void {
+        buffer.write(`[${token.scope}]`);
+    }
+
     private renderTimestampToken(token: TimestampToken, buffer: ITextBuffer): void {
         buffer.write(`[${token.timestamp.toLocaleTimeString()}]`);
     }
 
     private renderMessageToken(token: MessageToken, buffer: ITextBuffer): void {
         buffer.write(`${token.message}`);
+    }
+
+    private isScopeToken(token: ILogEventToken): token is ScopeToken {
+        const t = token as ScopeToken;
+        return t != undefined && t.scope != undefined;
     }
 
     private isLogLevelToken(token: ILogEventToken): token is LogLevelToken {
