@@ -7,7 +7,8 @@
     "rules": {
         "variable-name": ["allow-leading-underscore"],
         "triple-equals": [true, "allow-undefined-check"],
-        "one-line": [true, "check-open-brace", "check-whitespace"]
+        "one-line": [true, "check-open-brace", "check-whitespace"],
+        "ordered-imports": false
     },
     "rulesDirectory": []
 }
