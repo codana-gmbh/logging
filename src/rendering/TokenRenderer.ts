@@ -6,6 +6,7 @@ import {LogLevelToken} from "./LogLevelToken";
 import {MessageToken} from "./MessageToken";
 import {TimestampToken} from "./TimestampToken";
 import {ScopeToken} from "./ScopeToken";
+import { ErrorToken } from "./ErrorToken";
 
 export class TokenRenderer implements ITokenRenderer {
 
@@ -20,8 +21,11 @@ export class TokenRenderer implements ITokenRenderer {
             this.renderMessageToken(token, buffer);
         }
         else if (this.isTimestampToken(token)) {
-            this.renderTimestampToken(token, buffer);
-        }
+			this.renderTimestampToken(token, buffer);
+		}
+		else if (this.isErrorToken(token)) {
+			this.renderErrorToken(token, buffer);
+		}
     }
 
     private renderLevelToken(token: LogLevelToken, buffer: ITextBuffer): void {
@@ -56,8 +60,13 @@ export class TokenRenderer implements ITokenRenderer {
         buffer.write(`[${token.timestamp.toLocaleTimeString()}]`);
     }
 
+	private renderErrorToken(token: ErrorToken, buffer: ITextBuffer): void {
+		buffer.writeLine();
+		buffer.write(token.error.toString());
+	}
+
     private renderMessageToken(token: MessageToken, buffer: ITextBuffer): void {
-        buffer.write(`${token.message}`);
+        buffer.write(token.message);
     }
 
     private isScopeToken(token: ILogEventToken): token is ScopeToken {
@@ -79,4 +88,9 @@ export class TokenRenderer implements ITokenRenderer {
         const t = token as TimestampToken;
         return t != undefined && t.timestamp != undefined;
     }
+
+	private isErrorToken(token: ILogEventToken): token is ErrorToken {
+		const t = token as ErrorToken;
+		return t != undefined && t.error != undefined;
+	}
 }

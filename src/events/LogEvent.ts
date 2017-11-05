@@ -1,6 +1,6 @@
 import {LogLevel} from "../LogLevel";
-import {ILogEventProperty} from "./ILogEventProperty";
 import {Message} from "../parsing/Message";
+import {ILogEventProperty} from "./ILogEventProperty";
 
 export class LogEvent {
 

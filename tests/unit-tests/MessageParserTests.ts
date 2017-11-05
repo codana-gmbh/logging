@@ -1,5 +1,5 @@
-import {MessageParser} from "../src/parsing/MessageParser";
-import {Message} from "../src/parsing/Message";
+import {MessageParser} from "../../src/parsing/MessageParser";
+import {Message} from "../../src/parsing/Message";
 
 describe("MessageParser", () => {
 

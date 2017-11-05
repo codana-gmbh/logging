@@ -4,6 +4,7 @@ import {ILogger} from "./ILogger";
 import {LogLevel} from "./LogLevel";
 import {SafeAggregateSink} from "./sinks/SafeAggregateSink";
 import {MessageParser} from "./parsing/MessageParser";
+import { LogEventPropertyFactory } from "./events/LogEventPropertyFactory";
 
 export class LoggerConfiguration {
 
@@ -30,6 +31,6 @@ export class LoggerConfiguration {
 
     public createLogger(scope: string): ILogger {
         const safeAggregateSink = new SafeAggregateSink(this._sinks);
-        return new Logger(scope, this._level, safeAggregateSink, new MessageParser());
+        return new Logger(scope, this._level, safeAggregateSink, new MessageParser(), new LogEventPropertyFactory());
     }
 }

@@ -8,7 +8,8 @@
         "variable-name": ["allow-leading-underscore"],
         "triple-equals": [true, "allow-undefined-check"],
         "one-line": [true, "check-open-brace", "check-whitespace"],
-        "ordered-imports": false
+        "ordered-imports": false,
+        "indent": ["tabs"]
     },
     "rulesDirectory": []
 }

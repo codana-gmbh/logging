@@ -1,5 +1,5 @@
-import {LoggerConfiguration} from "../src/LoggerConfiguration";
-import {LogLevel} from "../src/LogLevel";
+import {LoggerConfiguration} from "../../src/LoggerConfiguration";
+import {LogLevel} from "../../src/LogLevel";
 
 describe("LoggerConfiguration", () => {
     describe("static create", () => {

@@ -11,20 +11,20 @@ export class MessageParser {
     }
 
     private tokenize(template: string): IMessageToken[] {
-
+		const regex = /\{(.*?)\}/g;
         const tokens: IMessageToken[] = [];
-        let nextPosition = template.indexOf("{");
-        while (nextPosition > -1) {
-            const startIndex = nextPosition + 1;
-            const endPosition = template.indexOf("}", startIndex);
-            nextPosition = template.indexOf("{", endPosition);
-            const name = template.substr(startIndex, endPosition - startIndex);
-            tokens.push({
-                name,
-                position: tokens.length,
-            });
-
-        }
+        let regexResult = regex.exec(template);
+		while (regexResult !== null) {
+			// This is necessary to avoid infinite loops with zero-width matches
+			if (regexResult.index === regex.lastIndex) {
+				regex.lastIndex++;
+			}
+			tokens.push({
+				name: regexResult[1],
+				position: tokens.length,
+			});
+			regexResult = regex.exec(template);
+		}
         return tokens;
     }
 }
