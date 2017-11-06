@@ -9,7 +9,8 @@
         "triple-equals": [true, "allow-undefined-check"],
         "one-line": [true, "check-open-brace", "check-whitespace"],
         "ordered-imports": false,
-        "indent": ["tabs"]
+        "indent": ["tabs"],
+        "max-line-length": [250]
     },
     "rulesDirectory": []
 }

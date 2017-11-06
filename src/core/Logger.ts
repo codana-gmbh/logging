@@ -15,10 +15,10 @@ export class Logger implements ILogger {
 	private _logEventPropertyFactory: LogEventPropertyFactory;
 
 	public constructor(scope: string,
-					   level: LogLevel,
-					   sink: ILogEventSink,
-					   messageParser: MessageParser,
-					   logEventPropertyFactory: LogEventPropertyFactory) {
+					               level: LogLevel,
+					               sink: ILogEventSink,
+					               messageParser: MessageParser,
+					               logEventPropertyFactory: LogEventPropertyFactory) {
 		this._scope = scope;
 		this._level = level;
 		this._sink = sink;
@@ -41,7 +41,7 @@ export class Logger implements ILogger {
 	}
 
 	public info(message: string, ...rest: any[]): void {
-		this.internalWrite(LogLevel.Info, message,  rest, undefined);
+		this.internalWrite(LogLevel.Info, message, rest, undefined);
 	}
 
 	public warn(message: string, ...rest: any[]): void {
@@ -57,9 +57,6 @@ export class Logger implements ILogger {
 	}
 
 	private internalWrite(level: LogLevel, message: string, args: any[], error: Error | null | undefined): void {
-		if (level === LogLevel.Error || level === LogLevel.Fatal) {
-
-		}
 		const messageTemplate = this._messageParser.parse(message);
 		const properties = this._logEventPropertyFactory.createProperties(messageTemplate.tokens, args);
 		const logEvent = new LogEvent(this._scope, new Date(), level, error === null ? undefined : error, messageTemplate, properties);
