@@ -62,7 +62,11 @@ export class TokenRenderer implements ITokenRenderer {
 
 	private renderErrorToken(token: ErrorToken, buffer: ITextBuffer): void {
 		buffer.writeLine();
-		buffer.write(token.error.toString());
+		buffer.write(token.error.message);
+		if (token.error.stack != undefined) {
+			buffer.writeLine();
+			buffer.write(token.error.stack);
+		}
 	}
 
     private renderMessageToken(token: MessageToken, buffer: ITextBuffer): void {
