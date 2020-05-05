@@ -1,12 +1,9 @@
-import chalk, { Chalk } from "chalk";
-import { LogEvent } from "../../events/LogEvent";
-import { ITextBuffer } from "../../formatting/ITextBuffer";
-import { ITextFormatter } from "../../formatting/ITextFormatter";
+import * as chalk from "chalk";
+import { LogEvent } from "../../events";
+import { ITextBuffer, ITextFormatter } from "../../formatting";
 import { LogLevel } from "../../LogLevel";
 import { ILogEventToken } from "../../rendering/ILogEventToken";
-import { ITokenRenderer } from "../../rendering/ITokenRenderer";
-import { LogEventTokenizer } from "../../rendering/LogEventTokenizer";
-import { LogLevelToken } from "../../rendering/LogLevelToken";
+import { ITokenRenderer, LogEventTokenizer, LogLevelToken } from "../../rendering";
 import { ChalkColoredTextBuffer } from "./ChalkColoredTextBuffer";
 
 export class ColoredConsoleFormatter implements ITextFormatter {
@@ -37,7 +34,7 @@ export class ColoredConsoleFormatter implements ITextFormatter {
     return t != undefined && t.level != undefined;
   }
 
-  private getDefaultColor(): Chalk {
+  private getDefaultColor(): chalk.Chalk {
     return chalk.dim;
   }
 

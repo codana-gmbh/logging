@@ -3,14 +3,17 @@ export class LogEventPropertyValueFormatter {
     if (value == undefined) {
       return "undefined";
     }
-    const valueType = typeof value;
-    switch (valueType) {
-      case "string":
-        return value.toString();
-      case "object":
-        return JSON.stringify(value, null, 2);
-      default:
-        return value.toString();
+    if(typeof value === "string") {
+      return value;
     }
+    if(typeof value === "object") {
+      return JSON.stringify(value, null, 2);
+    }
+
+    const unknown = (value as unknown) as { toString?: () => string };
+    if(unknown.toString == undefined) {
+      return "unknown";
+    }
+    return unknown.toString();
   }
 }

@@ -22,6 +22,7 @@ export class LogEvent {
                        error: Error | undefined,
                        message: Message,
                        properties: ILogEventProperty[]) {
+        this._properties = [];
         this.scope = scope;
         this.timestamp = timestamp;
         this.level = level;
@@ -37,9 +38,6 @@ export class LogEvent {
     public addOrUpdateProperty(property: ILogEventProperty): void {
         if (property == undefined) {
             throw new Error("Parameter property must not be undefined");
-        }
-        if (this._properties == undefined) {
-            this._properties = [];
         }
         this._properties = this._properties.filter((x) => x.name !== property.name);
         this._properties.push({name: property.name, value: property.value});
