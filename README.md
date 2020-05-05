@@ -1,4 +1,4 @@
-# @econsor-mobile/logging [![Build Status](https://travis-ci.org/econsor-mobile/logging.svg?branch=master)](https://travis-ci.org/econsor-mobile/logging)
+# @econsor-mobile/logging ![CI](https://github.com/econsor-mobile/logging/workflows/CI/badge.svg) ![publish](https://github.com/econsor-mobile/logging/workflows/publish/badge.svg)
 This package is the core library for logging with javascript used in projects of econsor-mobile.
 
 This library is heavily inspired by [Serilog](https://github.com/serilog/serilog)
